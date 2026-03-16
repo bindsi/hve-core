@@ -2,6 +2,15 @@ HVE Core provides the complete collection of AI chat agents, prompts, instructio
 
 Use this edition when you want access to everything without choosing a focused collection.
 
+GitHub automation agents included (via github collection):
+
+- **Issue Triage Agent** — Automated single-issue classification, labeling, duplicate detection, and agent-ready evaluation
+
+HVE Core automation agents included:
+
+- **Dependency Reviewer** — Reviews dependency changes for necessity, licensing, SHA pinning, and environment sync
+- **Doc Update Checker** — Detects documentation drift after code changes and creates tracking issues
+
 Code review agents included (via coding-standards collection):
 
 - **Functional Code Review** — Pre-PR branch diff reviewer for functional correctness, error handling, edge cases, and testing gaps
