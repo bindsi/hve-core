@@ -2,8 +2,7 @@
 on:
   pull_request:
     types: [opened, ready_for_review]
-
-skip-bots: ["dependabot[bot]", "github-actions[bot]"]
+  skip-bots: ["dependabot[bot]", "github-actions[bot]"]
 
 engine: copilot
 
@@ -30,8 +29,6 @@ safe-outputs:
   add-labels:
     allowed: [needs-revision, review-passed]
     max: 2
-  convert-to-draft:
-    max: 1
 ---
 
 # PR First-Pass Review

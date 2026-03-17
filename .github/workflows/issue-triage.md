@@ -3,9 +3,9 @@ on:
   issues:
     types: [opened, labeled]
     names: [needs-triage]
-    roles: [all]
-    skip-bots: ["dependabot[bot]", "github-actions[bot]"]
-    reaction: eyes
+  roles: [admin, maintainer, write, triage]
+  skip-bots: ["dependabot[bot]", "github-actions[bot]"]
+  reaction: eyes
 
 engine: copilot
 timeout-minutes: 10

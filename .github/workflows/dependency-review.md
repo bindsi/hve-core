@@ -9,8 +9,8 @@ on:
       - '**/pyproject.toml'
       - '.devcontainer/**'
       - '.github/workflows/copilot-setup-steps.yml'
-    skip-bots: ["dependabot[bot]"]
-    reaction: eyes
+  skip-bots: ["dependabot[bot]"]
+  reaction: eyes
 
 engine: copilot
 timeout-minutes: 15

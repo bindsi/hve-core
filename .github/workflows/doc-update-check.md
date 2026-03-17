@@ -12,7 +12,7 @@ on:
       - 'collections/**'
       - '.devcontainer/**'
       - '.github/workflows/**'
-    skip-bots: ["dependabot[bot]"]
+  skip-bots: ["dependabot[bot]", "github-actions[bot]"]
 
 engine: copilot
 timeout-minutes: 15

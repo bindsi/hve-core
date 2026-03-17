@@ -5,8 +5,7 @@ on:
   # Also support manual trigger via slash command in issue comments
   # command:
   #   name: implement
-
-skip-bots: ["dependabot[bot]", "github-actions[bot]"]
+  skip-bots: ["dependabot[bot]", "github-actions[bot]"]
 
 engine: copilot
 
@@ -43,7 +42,7 @@ Only proceed if the triggering label is `agent-ready`.
 ## Workflow
 
 1. Read the issue title and description from
-   `${{ needs.activation.outputs.text }}`. Identify what needs to change,
+   `${{ steps.sanitized.outputs.text }}`. Identify what needs to change,
    which files are involved, and any acceptance criteria.
 
 2. Search for relevant files, existing patterns,
