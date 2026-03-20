@@ -8,3 +8,5 @@
 *.docx binary
 *.jpg binary
 *.png binary
+
+.github/workflows/*.lock.yml linguist-generated=true merge=ours
