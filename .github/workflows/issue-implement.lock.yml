@@ -21,7 +21,11 @@
 # For more information: https://github.github.com/gh-aw/introduction/overview/
 #
 #
-# gh-aw-metadata: {"schema_version":"v3","frontmatter_hash":"2d2b09620ba13f679db8900902b293fa50abf40690d9aac9804b39620d156c62","compiler_version":"v0.63.1","strict":true,"agent_id":"copilot"}
+# Resolved workflow manifest:
+#   Imports:
+#     - ../agents/hve-core/task-implementor.agent.md
+#
+# gh-aw-metadata: {"schema_version":"v3","frontmatter_hash":"e235691a8784894105d4f3eb84bdc6641f3f434e53024e347827c5b8414fe1ff","compiler_version":"v0.63.1","strict":true,"agent_id":"copilot"}
 
 name: "Issue Implementation Agent"
 "on":
@@ -211,6 +215,9 @@ jobs:
           </system>
           GH_AW_PROMPT_EOF
           cat << 'GH_AW_PROMPT_EOF'
+          {{#runtime-import .github/agents/hve-core/task-implementor.agent.md}}
+          GH_AW_PROMPT_EOF
+          cat << 'GH_AW_PROMPT_EOF'
           {{#runtime-import .github/workflows/issue-implement.md}}
           GH_AW_PROMPT_EOF
           } > "$GH_AW_PROMPT"
@@ -329,6 +336,17 @@ jobs:
             collections/
             package.json
             justfile
+      - name: Merge remote .github folder
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          GH_AW_AGENT_FILE: ".github/agents/hve-core/task-implementor.agent.md"
+          GH_AW_AGENT_IMPORT_SPEC: "../agents/hve-core/task-implementor.agent.md"
+        with:
+          script: |
+            const { setupGlobals } = require('${{ runner.temp }}/gh-aw/actions/setup_globals.cjs');
+            setupGlobals(core, github, context, exec, io);
+            const { main } = require('${{ runner.temp }}/gh-aw/actions/merge_remote_agent_github_folder.cjs');
+            await main();
       - name: Create gh-aw temp directory
         run: bash ${RUNNER_TEMP}/gh-aw/actions/create_gh_aw_tmp_dir.sh
       - name: Configure gh CLI for GitHub Enterprise
