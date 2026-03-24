@@ -23,6 +23,7 @@ imports:
 checkout:
   sparse-checkout: |
     .github/copilot-instructions.md
+    .github/ISSUE_TEMPLATE/
     .github/instructions/coding-standards/
     .github/instructions/hve-core/
     .github/instructions/shared/
@@ -40,7 +41,7 @@ permissions:
 safe-outputs:
   create-issue:
     max: 3
-    labels: [documentation, needs-triage]
+    labels: [documentation, needs-triage, agent-ready]
     title-prefix: "docs: "
   noop:
     max: 1
@@ -69,7 +70,20 @@ any documentation that has become stale.
 4. Read each referenced documentation file.
 5. Compare the documentation against the current implementation.
 6. For documentation that no longer accurately describes the implementation, search for existing open issues about the same documentation file.
-7. If no existing issue covers the gap, create a new issue with the `docs:` title prefix.
+7. If no existing issue covers the gap, create a new issue following the guidelines below.
+
+## Issue Creation Guidelines
+
+When creating issues, use the **bug-report** template structure from `.github/ISSUE_TEMPLATE/bug-report.yml`:
+
+* **Title**: Use the `docs:` prefix followed by a concise description (e.g., `docs: update scripts/README.md for new linting commands`).
+* **Body**: Structure the issue body to match the bug-report template fields:
+  * **Component**: Always `Documentation`.
+  * **Bug Description**: Describe what documentation is stale and what changed in code.
+  * **Expected Behavior**: Describe what the documentation should say after the update.
+  * **Steps to Reproduce**: Reference the specific commit or PR that introduced the change.
+  * **Additional Context**: Link to the specific documentation file(s) and code file(s).
+* **Labels**: Issues are automatically labeled `documentation`, `needs-triage`, and `agent-ready` so the issue-implement workflow can pick them up.
 
 ## Constraints
 
