@@ -1,0 +1,14 @@
+# Exclude heavy directories from Copilot CLI context to stay within token limits.
+# These are designed for interactive Copilot Chat, not agentic workflow sandboxes.
+.github/agents/
+.github/skills/
+.github/instructions/ado/
+.github/instructions/design-thinking/
+.github/instructions/experimental/
+.github/instructions/github/
+collections/
+plugins/
+docs/
+extension/
+logs/
+.copilot-tracking/
