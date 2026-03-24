@@ -20,7 +20,9 @@ checkout:
   sparse-checkout: |
     .github/workflows/
     .github/copilot-instructions.md
-    .copilotignore
+    .github/instructions/coding-standards/
+    .github/instructions/hve-core/
+    .github/instructions/shared/
     scripts/
     collections/
     package.json
