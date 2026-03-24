@@ -13,6 +13,16 @@ on:
 engine: copilot
 timeout-minutes: 30
 
+checkout:
+  sparse-checkout: |
+    .github/workflows/
+    .github/copilot-instructions.md
+    .copilotignore
+    scripts/
+    collections/
+    package.json
+    justfile
+
 permissions:
   contents: read
   issues: read
