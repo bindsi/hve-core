@@ -21,7 +21,7 @@
 # For more information: https://github.github.com/gh-aw/introduction/overview/
 #
 #
-# gh-aw-metadata: {"schema_version":"v3","frontmatter_hash":"9e0502707b329449a46b53037830e0059551ed071ecf86211a06502d2e04eabc","compiler_version":"v0.63.1","strict":true,"agent_id":"copilot"}
+# gh-aw-metadata: {"schema_version":"v3","frontmatter_hash":"2d2b09620ba13f679db8900902b293fa50abf40690d9aac9804b39620d156c62","compiler_version":"v0.63.1","strict":true,"agent_id":"copilot"}
 
 name: "Issue Implementation Agent"
 "on":
@@ -200,6 +200,9 @@ jobs:
           {{#if __GH_AW_GITHUB_RUN_ID__ }}
           - **workflow-run-id**: __GH_AW_GITHUB_RUN_ID__
           {{/if}}
+          - **checkouts**: The following repositories have been checked out and are available in the workspace:
+            - `$GITHUB_WORKSPACE` → `__GH_AW_GITHUB_REPOSITORY__` (cwd) [shallow clone, fetch-depth=1 (default)]
+            - **Note**: If a branch you need is not in the list above and is not listed as an additional fetched ref, it has NOT been checked out. For private repositories you cannot fetch it without proper authentication. If the branch is required and not available, exit with an error and ask the user to add it to the `fetch:` option of the `checkout:` configuration (e.g., `fetch: ["refs/pulls/open/*"]` for all open PR refs, or `fetch: ["main", "feature/my-branch"]` for specific branches).
           </github-context>
           
           GH_AW_PROMPT_EOF
@@ -318,6 +321,14 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
+          sparse-checkout: |
+            .github/workflows/
+            .github/copilot-instructions.md
+            .copilotignore
+            scripts/
+            collections/
+            package.json
+            justfile
       - name: Create gh-aw temp directory
         run: bash ${RUNNER_TEMP}/gh-aw/actions/create_gh_aw_tmp_dir.sh
       - name: Configure gh CLI for GitHub Enterprise
