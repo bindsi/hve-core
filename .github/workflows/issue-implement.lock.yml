@@ -25,7 +25,7 @@
 #   Imports:
 #     - ../agents/hve-core/task-implementor.agent.md
 #
-# gh-aw-metadata: {"schema_version":"v3","frontmatter_hash":"e235691a8784894105d4f3eb84bdc6641f3f434e53024e347827c5b8414fe1ff","compiler_version":"v0.63.1","strict":true,"agent_id":"copilot"}
+# gh-aw-metadata: {"schema_version":"v3","frontmatter_hash":"86b95fe9700fb12bbb417585d27c659951f370f04dc97f155b5a40a0f97fb811","compiler_version":"v0.63.1","strict":true,"agent_id":"copilot"}
 
 name: "Issue Implementation Agent"
 "on":
@@ -331,7 +331,9 @@ jobs:
           sparse-checkout: |
             .github/workflows/
             .github/copilot-instructions.md
-            .copilotignore
+            .github/instructions/coding-standards/
+            .github/instructions/hve-core/
+            .github/instructions/shared/
             scripts/
             collections/
             package.json
