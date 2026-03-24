@@ -178,7 +178,8 @@ function Invoke-CollectionValidation {
         # Required fields
         $requiredFields = @('id', 'name', 'description', 'items')
         foreach ($field in $requiredFields) {
-            if (-not $manifest.ContainsKey($field) -or $null -eq $manifest[$field]) {
+            $value = $manifest[$field]
+            if (-not $manifest.ContainsKey($field) -or $null -eq $value -or ($value -is [string] -and [string]::IsNullOrWhiteSpace($value))) {
                 $fileErrors += "missing required field '$field'"
             }
         }
