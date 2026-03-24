@@ -13,6 +13,9 @@ on:
 engine: copilot
 timeout-minutes: 30
 
+imports:
+  - ../agents/hve-core/task-implementor.agent.md
+
 checkout:
   sparse-checkout: |
     .github/workflows/
