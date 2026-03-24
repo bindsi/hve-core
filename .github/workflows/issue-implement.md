@@ -13,9 +13,6 @@ on:
 engine: copilot
 timeout-minutes: 30
 
-imports:
-  - ../agents/hve-core/task-implementor.agent.md
-
 permissions:
   contents: read
   issues: read
