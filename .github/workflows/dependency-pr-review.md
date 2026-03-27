@@ -121,3 +121,7 @@ Use inline `create-pull-request-review-comment` for findings tied to specific li
 * Do not merge the PR; approval alone is sufficient.
 * Maximum 5 inline review comments.
 * Keep review comments actionable and specific.
+
+---
+
+🤖 Crafted with precision by ✨Copilot following brilliant human instruction, then carefully refined by our team of discerning human reviewers.

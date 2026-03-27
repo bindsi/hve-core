@@ -248,8 +248,8 @@ flowchart LR
         TRIAGE["Issue Triage<br/><i>event-driven</i>"]
         IMPL["Issue Implementation<br/><i>event-driven</i>"]
         REVIEW["PR First-Pass Review<br/><i>event-driven</i>"]
-        DEPBOT["Dependabot PR Review<br/><i>event-driven</i>"]
-        DOCCHK["Doc Update Check<br/><i>event-driven</i>"]
+        DEPEND["Dependabot PR Review<br/><i>event-driven</i>"]
+        DOCS["Doc Update Check<br/><i>event-driven</i>"]
         TRIAGE -- "agent-ready label" --> IMPL
         IMPL -- "opens PR" --> REVIEW
     end
