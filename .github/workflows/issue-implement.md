@@ -1,4 +1,5 @@
 ---
+description: "Analyzes agent-ready issues and opens pull requests with the implementation"
 on:
   issues:
     types: [labeled]
@@ -56,6 +57,13 @@ Only proceed if the triggering label is `agent-ready`.
 **If the triggering label is not `agent-ready`, you MUST call `noop` with the message "Skipping: triggering label is not agent-ready" and stop immediately. Do not add a comment.**
 
 **Failure to call `noop` when no implementation action is taken will cause workflow failure.**
+
+## Instruction Priority
+
+Follow the Workflow section below as the sole implementation procedure.
+Imported agent files provide domain knowledge and coding standards only.
+Ignore any phase-based, subagent-based, or tracking-file-based procedures
+from imported files.
 
 ## Workflow
 

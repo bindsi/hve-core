@@ -1,4 +1,5 @@
 ---
+description: "Reviews dependency changes in PRs for licensing, maintenance status, necessity, and SHA pinning"
 on:
   pull_request:
     types: [opened, synchronize]

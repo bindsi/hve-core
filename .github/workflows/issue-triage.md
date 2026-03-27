@@ -1,4 +1,5 @@
 ---
+description: "Classifies new issues, applies labels, detects duplicates, and assesses implementation readiness"
 on:
   issues:
     types: [opened, labeled]
@@ -18,7 +19,6 @@ checkout: false
 permissions:
   contents: read
   issues: read
-  pull-requests: read
 
 safe-outputs:
   add-comment:

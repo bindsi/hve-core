@@ -1,4 +1,5 @@
 ---
+description: "Detects stale documentation after code changes and creates issues for updates"
 on:
   push:
     branches: [main]
@@ -58,7 +59,7 @@ any documentation that has become stale.
 **You MUST call `noop` and stop immediately if any of these conditions are true:**
 
 * All changed files are documentation files (paths under `docs/`). Call `noop` with message "Skipping: only documentation files changed."
-* All changed files already have documentation updates in the same push. Call `noop` with message "Skipping: documentation was updated alongside code."
+* Every code file changed in the push has its mapped documentation file also changed in the same push. Call `noop` with message "Skipping: documentation was updated alongside code."
 
 **Failure to call `noop` when no documentation check is needed will cause workflow failure.**
 
@@ -76,14 +77,19 @@ any documentation that has become stale.
 
 When creating issues, use the **bug-report** template structure from `.github/ISSUE_TEMPLATE/bug-report.yml`:
 
-* **Title**: Use the `docs:` prefix followed by a concise description (e.g., `docs: update scripts/README.md for new linting commands`).
-* **Body**: Structure the issue body to match the bug-report template fields:
-  * **Component**: Always `Documentation`.
-  * **Bug Description**: Describe what documentation is stale and what changed in code.
-  * **Expected Behavior**: Describe what the documentation should say after the update.
-  * **Steps to Reproduce**: Reference the specific commit or PR that introduced the change.
-  * **Additional Context**: Link to the specific documentation file(s) and code file(s).
-* **Labels**: Issues are automatically labeled `documentation`, `needs-triage`, and `agent-ready` so the issue-implement workflow can pick them up.
+* Use the `docs:` prefix in the title followed by a concise description (e.g., `docs: update scripts/README.md for new linting commands`).
+* Structure the issue body to match the bug-report template fields.
+* Apply `documentation`, `needs-triage`, and `agent-ready` labels so the issue-implement workflow can pick them up.
+
+### Bug-Report Template Field Mapping
+
+| Template Field     | Content                                                              |
+|--------------------|----------------------------------------------------------------------|
+| Component          | Always `Documentation`                                               |
+| Bug Description    | Describe what documentation is stale and what changed in code        |
+| Expected Behavior  | Describe what the documentation should say after the update          |
+| Steps to Reproduce | Reference the specific commit or PR that introduced the change       |
+| Additional Context | Link to the specific documentation file(s) and code file(s)         |
 
 ## Constraints
 

@@ -1,4 +1,5 @@
 ---
+description: "Automated first-pass quality review on pull requests from non-maintainers"
 on:
   pull_request:
     types: [opened, ready_for_review]
@@ -41,7 +42,10 @@ safe-outputs:
     max: 1
   add-labels:
     allowed: [needs-revision, review-passed]
-    max: 2
+    blocked-with:
+      needs-revision: [review-passed]
+      review-passed: [needs-revision]
+    max: 1
   noop:
     max: 1
 ---
@@ -59,13 +63,18 @@ Check the PR author's association from the event context.
 
 * The author is a `MEMBER`, `OWNER`, or `COLLABORATOR`: call `noop` with message "Skipping: PR author is a maintainer."
 * The PR is a draft: call `noop` with message "Skipping: PR is a draft."
-* The PR modifies more than 50 files: call `noop` with message "Skipping: PR exceeds 50-file review limit."
 
 Only proceed with review for PRs from `CONTRIBUTOR`, `FIRST_TIMER`,
-`FIRST_TIME_CONTRIBUTOR`, or `NONE` associations that are not drafts
-and contain 50 or fewer changed files.
+`FIRST_TIME_CONTRIBUTOR`, or `NONE` associations that are not drafts.
 
 **Failure to call `noop` when no review action is taken will cause workflow failure.**
+
+## Instruction Priority
+
+Follow the Review Steps below as the sole review procedure.
+Imported agent files provide domain knowledge and coding standards only.
+Ignore any phase-based, tracking-file-based, or multi-pass procedures
+from imported files.
 
 ## Review Steps
 
